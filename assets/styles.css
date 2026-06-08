@@ -34,6 +34,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+@keyframes homeDropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -662,6 +673,72 @@ h2 {
   background: linear-gradient(180deg, var(--paper), var(--sand));
 }
 
+.lawyer-card {
+  min-height: 300px;
+  padding: 28px;
+  border: 1px solid rgba(17, 16, 12, 0.12);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 18px 54px rgba(17, 16, 12, 0.08);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.lawyer-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(198, 154, 53, 0.7);
+  box-shadow: 0 28px 78px rgba(17, 16, 12, 0.14);
+}
+
+.profile-icon {
+  position: relative;
+  width: 86px;
+  height: 86px;
+  margin-bottom: 26px;
+  border: 1px solid rgba(198, 154, 53, 0.55);
+  border-radius: 50%;
+  background:
+    linear-gradient(145deg, rgba(198, 154, 53, 0.28), rgba(243, 236, 223, 0.95)),
+    var(--beige);
+}
+
+.profile-icon::before,
+.profile-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--black);
+}
+
+.profile-icon::before {
+  top: 20px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.profile-icon::after {
+  bottom: 18px;
+  width: 48px;
+  height: 25px;
+  border-radius: 40px 40px 18px 18px;
+}
+
+.lawyer-card h3 {
+  font-size: 1.22rem;
+}
+
+.lawyer-role {
+  margin-top: 8px;
+  color: var(--gold-dark);
+  font-weight: 900;
+}
+
+.lawyer-card p:not(.lawyer-role) {
+  margin-top: 14px;
+  color: var(--ink-soft);
+}
+
 .feature-icon {
   display: grid;
   place-items: center;
@@ -704,6 +781,7 @@ h2 {
   align-items: center;
 }
 
+.split-copy h1,
 .split-copy h2 {
   font-size: 2.8rem;
   line-height: 1.08;
@@ -836,6 +914,124 @@ textarea:focus {
   font-size: 0.88rem;
 }
 
+.home-page .site-header,
+.home-page .hero .eyebrow,
+.home-page .hero h1,
+.home-page .hero-lede,
+.home-page .hero-actions,
+.home-page .hero-panel,
+.home-page .section-head,
+.home-page .service-card,
+.home-page .history-card,
+.home-page .history-row,
+.home-page .feature-card,
+.home-page .cta-band,
+.home-page .footer-inner {
+  opacity: 0;
+  animation: homeDropIn 830ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.home-page .site-header {
+  animation-delay: 0ms;
+}
+
+.home-page .hero .eyebrow {
+  animation-delay: 140ms;
+}
+
+.home-page .hero h1 {
+  animation-delay: 260ms;
+}
+
+.home-page .hero-lede {
+  animation-delay: 380ms;
+}
+
+.home-page .hero-actions {
+  animation-delay: 500ms;
+}
+
+.home-page .hero-panel {
+  animation-delay: 640ms;
+}
+
+.home-page .section-head {
+  animation-delay: 760ms;
+}
+
+.home-page .service-card:nth-child(1),
+.home-page .history-card,
+.home-page .feature-card:nth-child(1) {
+  animation-delay: 880ms;
+}
+
+.home-page .service-card:nth-child(2),
+.home-page .history-row:nth-child(1),
+.home-page .feature-card:nth-child(2) {
+  animation-delay: 1000ms;
+}
+
+.home-page .service-card:nth-child(3),
+.home-page .history-row:nth-child(2),
+.home-page .feature-card:nth-child(3) {
+  animation-delay: 1120ms;
+}
+
+.home-page .service-card:nth-child(4),
+.home-page .history-row:nth-child(3),
+.home-page .cta-band {
+  animation-delay: 1240ms;
+}
+
+.home-page .footer-inner {
+  animation-delay: 1360ms;
+}
+
+.about-page .image-panel,
+.about-page .feature-card,
+.about-page .history-row {
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.about-page .image-panel:hover,
+.about-page .feature-card:hover,
+.about-page .history-row:hover {
+  transform: translateY(-6px);
+  border-color: rgba(198, 154, 53, 0.65);
+  box-shadow: 0 28px 78px rgba(17, 16, 12, 0.13);
+}
+
+.about-story-lead {
+  padding-top: 76px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .site-header,
+  .home-page .hero .eyebrow,
+  .home-page .hero h1,
+  .home-page .hero-lede,
+  .home-page .hero-actions,
+  .home-page .hero-panel,
+  .home-page .section-head,
+  .home-page .service-card,
+  .home-page .history-card,
+  .home-page .history-row,
+  .home-page .feature-card,
+  .home-page .cta-band,
+  .home-page .footer-inner {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .about-page .image-panel,
+  .about-page .feature-card,
+  .about-page .history-row,
+  .lawyer-card {
+    transition: none;
+  }
+}
+
 .site-footer {
   padding: 42px 0;
   color: rgba(255, 255, 255, 0.72);
@@ -888,6 +1084,7 @@ textarea:focus {
   }
 
   .section h2,
+  .split-copy h1,
   .split-copy h2 {
     font-size: 2.35rem;
   }
@@ -1010,6 +1207,7 @@ textarea:focus {
   }
 
   .section h2,
+  .split-copy h1,
   .split-copy h2,
   .history-card h2,
   .cta-band h2 {
