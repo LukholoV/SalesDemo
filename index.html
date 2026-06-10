@@ -27,6 +27,19 @@
       <div class="nav-actions">
         <a class="phone-link" href="tel:+27115550192">+27 11 555 0192</a>
         <a class="btn btn-primary" href="contact.html">Send Enquiry</a>
+        <details class="mobile-menu">
+          <summary aria-label="Open navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </summary>
+          <div class="mobile-menu-panel">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="legal-services.html">Legal Services</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </details>
       </div>
     </nav>
   </header>
@@ -242,5 +255,42 @@
       </div>
     </div>
   </footer>
+  <script>
+    (() => {
+      const revealTargets = document.querySelectorAll([
+        ".site-header",
+        ".hero .eyebrow",
+        ".hero h1",
+        ".hero-lede",
+        ".hero-actions",
+        ".hero-panel",
+        ".section-head",
+        ".service-card",
+        ".history-card",
+        ".history-row",
+        ".feature-card",
+        ".cta-band",
+        ".footer-inner"
+      ].join(","));
+
+      if (!("IntersectionObserver" in window)) {
+        revealTargets.forEach((target) => target.classList.add("is-revealed"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+          .forEach((entry, index) => {
+            entry.target.style.setProperty("--reveal-delay", `${index * 80}ms`);
+            entry.target.classList.add("is-revealed");
+            observer.unobserve(entry.target);
+          });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+
+      revealTargets.forEach((target) => observer.observe(target));
+    })();
+  </script>
 </body>
 </html>
