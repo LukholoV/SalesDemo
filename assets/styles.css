@@ -202,12 +202,10 @@ select {
   gap: 4px;
   width: 42px;
   height: 42px;
-  border: 1px solid rgba(198, 154, 53, 0.55);
+  border: 0;
   border-radius: 4px;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(198, 154, 53, 0.08)),
-    var(--black);
-  box-shadow: 0 12px 28px rgba(17, 16, 12, 0.18);
+  background: transparent;
+  box-shadow: none;
   cursor: pointer;
   list-style: none;
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
@@ -219,27 +217,24 @@ select {
 
 .mobile-menu summary span {
   display: block;
-  width: 18px;
+  width: 22px;
   height: 2px;
-  background: var(--paper);
+  background: var(--black);
   transition: background 180ms ease;
 }
 
 .mobile-menu summary:hover,
 .mobile-menu summary:focus-visible,
 .mobile-menu[open] summary {
-  border-color: var(--gold);
-  background:
-    linear-gradient(145deg, rgba(198, 154, 53, 0.24), rgba(255, 255, 255, 0.04)),
-    var(--black);
+  background: transparent;
   transform: translateY(-2px);
-  box-shadow: 0 16px 34px rgba(198, 154, 53, 0.28);
+  box-shadow: none;
 }
 
 .mobile-menu summary:hover span,
 .mobile-menu summary:focus-visible span,
 .mobile-menu[open] summary span {
-  background: var(--paper);
+  background: var(--black);
 }
 
 .mobile-menu-panel {
